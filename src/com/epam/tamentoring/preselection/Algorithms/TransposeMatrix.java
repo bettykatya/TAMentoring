@@ -47,7 +47,6 @@ public class TransposeMatrix {
     }
     static private int[][] transposeMatrix(int [][] matrix){
         int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
-        //int [][] transposedMatrix = matrix;
 
         int n = matrix.length;
         int m = matrix[0].length;
