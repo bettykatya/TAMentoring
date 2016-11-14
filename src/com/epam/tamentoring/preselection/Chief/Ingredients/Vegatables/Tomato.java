@@ -9,6 +9,7 @@ import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
 public class Tomato extends Vegetable {
 
     public Tomato(){
+        setName(ChiefHelper.TOMATO_NAME);
         setCalories(ChiefHelper.TOMATO_CALORIES);
         setCarbs(ChiefHelper.TOMATO_CARBS);
         setFat(ChiefHelper.TOMATO_FAT);
