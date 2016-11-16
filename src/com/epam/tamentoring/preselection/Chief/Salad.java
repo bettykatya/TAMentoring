@@ -1,7 +1,6 @@
 package com.epam.tamentoring.preselection.Chief;
 
 import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
-
 import java.util.ArrayList;
 
 /**
@@ -26,8 +25,14 @@ public class Salad {
         ingredients = veg;
     }
 
-    public void makeRandomSalad(){
+    //TODO add comments
+    public void makeRandomSalad(int num){
+        ArrayList <Integer> ingrNumber = ChiefHelper.getRandomValues(num);
+        //TODO add enum with vegetable types and add switch-case in for-i cycle
+        ChiefHelper.Veggies veg = ChiefHelper.Veggies.POTATO;
+        switch(veg){
 
+        }
     }
     public ArrayList<Vegetable> getIngredients(){
         return ingredients;

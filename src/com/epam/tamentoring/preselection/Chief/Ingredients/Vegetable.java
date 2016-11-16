@@ -6,7 +6,6 @@ package com.epam.tamentoring.preselection.Chief.Ingredients;
 public class Vegetable {
     private String name = "NONAME";
     private double calories;
-    private double weight;
     private double fat;
     private double carbs;
 
@@ -15,9 +14,6 @@ public class Vegetable {
     }
     public void setCalories(double veg_calories){
         this.calories = veg_calories;
-    }
-    public void setWeight(double veg_weight){
-        this.weight = veg_weight;
     }
     public void setFat(double veg_fat){
         this.fat = veg_fat;

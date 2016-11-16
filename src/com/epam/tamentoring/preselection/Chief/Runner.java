@@ -10,8 +10,9 @@ import java.util.ArrayList;
  */
 public class Runner {
     public static void main(String[] args) {
-        Salad salad = makeSalad();
-        System.out.println(salad);
+        //Salad salad = makeSalad();
+        //System.out.println(salad);
+        //System.out.println(ChiefHelper.getRandomValues(2));
     }
 
     private static Salad makeSalad(){
