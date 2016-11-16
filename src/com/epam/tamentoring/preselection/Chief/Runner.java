@@ -1,28 +1,30 @@
 package com.epam.tamentoring.preselection.Chief;
 
-import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Tomato;
-import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
+import com.epam.tamentoring.preselection.Chief.Utils.Menu;
 
-import java.util.ArrayList;
-
-/**
- * Created by Katsiaryna Krechko on 11/12/2016.
- */
+//TODO remove useless comments, imports, etc.
 public class Runner {
     public static void main(String[] args) {
         //Salad salad = makeSalad();
         //System.out.println(salad);
         //System.out.println(ChiefHelper.getRandomValues(2));
-    }
 
-    private static Salad makeSalad(){
-        ArrayList <Vegetable> vegetables = new ArrayList<Vegetable>();
-        Tomato tom = new Tomato();
-        for (int i = 0; i < 4; i++) {
-            vegetables.add(tom);
-        }
+        /*
+        Salad salad = new Salad("SaladName");
+        salad.makeRandomSalad(4);
+        System.out.println(salad);
+        salad.printAllInfo();
 
-        Salad salad= new Salad("Tomato Salad", vegetables);
-        return salad;
+        System.out.println(salad.getCalories());
+        System.out.println("find by calories 15-20");
+        ChiefHelper.printVegetablesInfo(salad.findByCalories(100,5));
+
+        salad.sortByCalories();
+        System.out.println("sort by calories");
+        ChiefHelper.printVegetablesInfo(salad.getIngredients());
+        */
+        //System.out.println(salad.findByCalories(15,20));
+        //System.out.println(new VegetativeVegetable().getCalories());
+        Menu.runMenu();
     }
 }

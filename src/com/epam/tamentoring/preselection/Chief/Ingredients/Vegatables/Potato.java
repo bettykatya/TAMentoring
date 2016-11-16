@@ -1,16 +1,10 @@
 package com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables;
 
-import com.epam.tamentoring.preselection.Chief.ChiefHelper;
-import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
+import com.epam.tamentoring.preselection.Chief.Utils.ChiefHelper;
+import com.epam.tamentoring.preselection.Chief.Ingredients.VegetableTypes.RootVegetable;
 
-/**
- * Created by Katsiaryna Krechko on 11/12/2016.
- */
-public class Potato extends Vegetable{
+public class Potato extends RootVegetable{
     public Potato() {
-        setName(ChiefHelper.POTATO_NAME);
-        setCalories(ChiefHelper.POTATO_CALORIES);
-        setCarbs(ChiefHelper.POTATO_CARBS);
-        setFat(ChiefHelper.POTATO_FAT);
+        super(ChiefHelper.POTATO_NAME,ChiefHelper.POTATO_CALORIES,ChiefHelper.POTATO_FAT,ChiefHelper.POTATO_CARBS);
     }
 }

@@ -1,16 +1,10 @@
 package com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables;
 
-import com.epam.tamentoring.preselection.Chief.ChiefHelper;
-import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
+import com.epam.tamentoring.preselection.Chief.Utils.ChiefHelper;
+import com.epam.tamentoring.preselection.Chief.Ingredients.VegetableTypes.VegetativeVegetable;
 
-/**
- * Created by Katsiaryna Krechko on 11/12/2016.
- */
-public class Cucumber extends Vegetable {
+public class Cucumber extends VegetativeVegetable {
     public Cucumber() {
-        setName(ChiefHelper.CUCUMBER_NAME);
-        setCalories(ChiefHelper.CUCUMBER_CALORIES);
-        setCarbs(ChiefHelper.CUCUMBER_CARBS);
-        setFat(ChiefHelper.CUCUMBER_FAT);
+        super(ChiefHelper.CUCUMBER_NAME,ChiefHelper.CUCUMBER_CALORIES,ChiefHelper.CUCUMBER_FAT,ChiefHelper.CUCUMBER_CARBS);
     }
 }
