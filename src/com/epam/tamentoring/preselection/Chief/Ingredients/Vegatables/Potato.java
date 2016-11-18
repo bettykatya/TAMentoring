@@ -6,5 +6,6 @@ import com.epam.tamentoring.preselection.Chief.Ingredients.VegetableTypes.RootVe
 public class Potato extends RootVegetable{
     public Potato() {
         super(ChiefHelper.POTATO_NAME,ChiefHelper.POTATO_CALORIES,ChiefHelper.POTATO_FAT,ChiefHelper.POTATO_CARBS);
+        this.peel();
     }
 }

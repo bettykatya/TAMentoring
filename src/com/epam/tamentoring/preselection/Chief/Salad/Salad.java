@@ -1,4 +1,4 @@
-package com.epam.tamentoring.preselection.Chief;
+package com.epam.tamentoring.preselection.Chief.Salad;
 
 import com.epam.tamentoring.preselection.Chief.Comparators.VegetableCaloriesComparator;
 import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Carrot;
@@ -13,27 +13,22 @@ import java.util.Collections;
 
 public class Salad {
     private ArrayList<Vegetable> ingredients;
-    private String name = ChiefHelper.NEW_SALAD_NAME;
+    private String name;
 
     public Salad(){
-        ingredients = new ArrayList<Vegetable>();
-    }
-    public Salad(Vegetable veg){
-        ingredients = new ArrayList<Vegetable>();
-        ingredients.add(veg);
-    }
-    public Salad(ArrayList <Vegetable> veg){
-        ingredients = veg;
-    }
-    public Salad(String name, ArrayList <Vegetable> veg){
-        this.name = name;
-        ingredients = veg;
-    }
-    public Salad(String name){
-        this.name = name;
+        this.name = ChiefHelper.NEW_SALAD_NAME;
         ingredients = new ArrayList<Vegetable>();
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public void addVegetable(Vegetable veg){
+        this.ingredients.add(veg);
+    }
     /**
      * Creates ArrayList of random available vegetables.
      * @param numberIngredients number of ingredients in salad
@@ -41,7 +36,6 @@ public class Salad {
     public void makeRandomSalad(int numberIngredients){
         ingredients.clear();
         ArrayList <Integer> ingrNumbers = ChiefHelper.getRandomValues(numberIngredients);
-        //TODO add enum with vegetable types and add switch-case in for-i cycle
         for (int i = 0; i < ingrNumbers.size(); i++) {
             int num = ingrNumbers.get(i);
             switch(ChiefHelper.Veggies.values()[num]){
@@ -59,7 +53,6 @@ public class Salad {
                     break;
                 default:
                     break;
-                //TODO add custom exception
             }
 
         }
@@ -67,8 +60,6 @@ public class Salad {
     public ArrayList<Vegetable> getIngredients(){
         return ingredients;
     }
-    //TODO add exception if no veg's found
-    //TODO add exception if veg is already in salad
     public ArrayList<Vegetable> findByCalories(double min, double max){
         if(min > max){
             double temp = min;
@@ -104,8 +95,8 @@ public class Salad {
         }
         return "Salad '" + name + "' has following ingredients: " + ing;
     }
-
     public void printAllInfo(){
+        System.out.println("Salad '" + this.name + "' info:");
         System.out.format(ChiefHelper.FORMAT_STRING, "Ingredient", "Calories", "Fat", "Carbs");
         for (Vegetable veg : ingredients) {
             System.out.format(ChiefHelper.FORMAT_STRING, veg.getName(), veg.getCalories(), veg.getFat(), veg.getCarbs());

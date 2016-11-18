@@ -9,10 +9,7 @@ public class Vegetable {
     private double carbs;
 
     public Vegetable(){
-        name = "NONAME";
-        calories = DEFAULT_CALORIES_FAT_CARBS;
-        fat = DEFAULT_CALORIES_FAT_CARBS;
-        carbs = DEFAULT_CALORIES_FAT_CARBS;
+
     }
     public Vegetable(String name, double calories, double fat, double carbs){
         this.name = name;
@@ -20,6 +17,7 @@ public class Vegetable {
         this.fat = fat;
         this.carbs = carbs;
     }
+
     public void setName(String name){
         this.name = name;
     }
