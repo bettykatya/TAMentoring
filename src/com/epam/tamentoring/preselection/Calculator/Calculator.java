@@ -2,11 +2,7 @@ package com.epam.tamentoring.preselection.Calculator;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.StreamCorruptedException;
 
-/**
- * Created by Katsiaryna Krechko on 11/10/2016.
- */
 public class Calculator {
     private final String ERROR_MESSAGE = "Some error occured. Check values you entered and try again.";
 
