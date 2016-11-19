@@ -4,8 +4,8 @@ import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
 import com.epam.tamentoring.preselection.Chief.Interfaces.Peelable;
 
 public class RootVegetable extends Vegetable implements Peelable {
-    private String type;
-    private boolean peeled;
+    public String type;
+    public boolean peeled;
 
     public RootVegetable(){
         super();

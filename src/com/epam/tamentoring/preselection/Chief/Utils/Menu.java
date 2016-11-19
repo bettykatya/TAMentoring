@@ -16,10 +16,10 @@ public class Menu {
     private static final String OPTIONS_SALAD_NAME = "Please, name your salad.";
     private static final String OPTIONS_CUSTOM_SALAD = "Choose vegetable to add to your salad:\n 1 - Carrot\n 2 - Potato\n 3 - Cucumber\n 4 - Tomato\n\nOr choose other options:\n 5 - main menu\n 6 - salad is done\n 0 - exit\n\n";
     private static final String OPTIONS_RANDOM_SALAD = "There are " + ChiefHelper.NUMBER_ALL_VEGETABLES + " vegetables available. Please, enter number of ingredients you want in your salad  or 0 to exit program";
-    private static final String OPTIONS_SALAD = "What you want to do with that salad?\n 1 - Show all info\n 2 - Count calories\n 3 - Sort by calories\n 4 - Find ingredient\n 5 - main menu(make new salad)\n 0 - exit";
+    private static final String OPTIONS_SALAD = "What you want to do with that salad?\n 1 - Show all info\n 2 - Count calories\n 3 - Sort\n 4 - Find ingredient\n 5 - main menu(make new salad)\n 0 - exit";
     private static final String OPTIONS_FIND = "Find ingredients by\n 1 - Calories\n 2 - go back to options\n 0 - exit\n";
     private static final String OPTIONS_SORT = "Sort ingredients by\n 1 - Calories\n 2 - go back to options\n 0 - exit\n";
-    private static final String SEPARATOR_LINE = "\n-------------------------------------------\n";
+    private static final String SEPARATOR_LINE = "\n-------------------------------------------";
 
     private static final String ERROR_READING_CONSOLE_MESSAGE = "Error reading from console.";
     private static final String ERROR_PARSING_INTEGER_MESSAGE = "Symbol you entered is not an integer.";
@@ -65,6 +65,7 @@ public class Menu {
     }
 
     public static void runMenu(){
+        System.out.println(SEPARATOR_LINE);
         System.out.println(OPTIONS_MENU_MAIN);
         int option = readIntFromConsole();
         switch(option){
@@ -72,10 +73,12 @@ public class Menu {
                 System.exit(0);
             case 1:
                 salad = new Salad();
+                readSaladName();
                 runRandomSaladOptions();
                 break;
             case 2:
                 salad = new Salad();
+                readSaladName();
                 runCustomSaladOptions();
                 break;
             default:
@@ -84,13 +87,14 @@ public class Menu {
         }
     }
     private static void runRandomSaladOptions(){
+        System.out.println(SEPARATOR_LINE);
         System.out.println(OPTIONS_RANDOM_SALAD);
         int number = readIntFromConsole();
         salad.makeRandomSalad(number);
-        readSaladName();
         runSaladOptions();
     }
     private static void runCustomSaladOptions(){
+        System.out.println(SEPARATOR_LINE);
         System.out.println(OPTIONS_CUSTOM_SALAD);
         int option = readIntFromConsole();
         switch(option){
@@ -131,10 +135,12 @@ public class Menu {
             case 0:
                 System.exit(0);
             case 1:
+                System.out.println(SEPARATOR_LINE);
                 salad.printAllInfo();
                 runSaladOptions();
                 break;
             case 2:
+                System.out.println(SEPARATOR_LINE);
                 System.out.println("Salad '" + salad.getName() + "' has " + salad.getCalories() + " calories");
                 runSaladOptions();
                 break;
@@ -153,6 +159,7 @@ public class Menu {
         }
     }
     private static void findOptions(){
+        System.out.println(SEPARATOR_LINE);
         System.out.println(OPTIONS_FIND);
         int option = readIntFromConsole();
         switch(option) {
@@ -176,10 +183,11 @@ public class Menu {
         System.out.println("Enter max value: ");
         int max = readIntFromConsole();
 
-        System.out.println("Vegetables from the range: \n");
+        System.out.println("Vegetables from the range:");
         ChiefHelper.printVegetablesInfo(salad.findByCalories(min,max));
     }
     private static void sortOptions(){
+        System.out.println(SEPARATOR_LINE);
         System.out.println(OPTIONS_SORT);
         int option = readIntFromConsole();
         switch(option) {

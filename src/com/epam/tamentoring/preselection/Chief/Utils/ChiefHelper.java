@@ -58,6 +58,7 @@ public class ChiefHelper {
         TOMATO, POTATO, CUCUMBER, CARROT
     }
     public static void printVegetablesInfo(ArrayList<Vegetable> vegetables){
+        System.out.format(ChiefHelper.FORMAT_STRING, "Vegetable", "Calories", "Fat", "Carbs");
         for (Vegetable veg : vegetables) {
             System.out.format(FORMAT_STRING, veg.getName(), veg.getCalories(), veg.getFat(), veg.getCarbs());
         }

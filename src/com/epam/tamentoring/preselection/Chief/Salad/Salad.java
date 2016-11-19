@@ -97,10 +97,7 @@ public class Salad {
     }
     public void printAllInfo(){
         System.out.println("Salad '" + this.name + "' info:");
-        System.out.format(ChiefHelper.FORMAT_STRING, "Ingredient", "Calories", "Fat", "Carbs");
-        for (Vegetable veg : ingredients) {
-            System.out.format(ChiefHelper.FORMAT_STRING, veg.getName(), veg.getCalories(), veg.getFat(), veg.getCarbs());
-        }
+        ChiefHelper.printVegetablesInfo(this.getIngredients());
     }
 
 }
