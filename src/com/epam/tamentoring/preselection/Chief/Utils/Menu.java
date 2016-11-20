@@ -5,8 +5,12 @@ import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Cucumber;
 import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Potato;
 import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Tomato;
 import com.epam.tamentoring.preselection.Chief.Salad.Salad;
+import com.epam.tamentoring.preselection.ChiefExceptions.Exceptions.IngredientNotExistsException;
+import com.epam.tamentoring.preselection.ChiefExceptions.Exceptions.NoIngredientsException;
+import com.epam.tamentoring.preselection.ChiefExceptions.Exceptions.SaladHasIngredientException;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Menu {
@@ -53,7 +57,7 @@ public class Menu {
         try{
             key = reader.readLine();
         }
-        catch (Exception e){
+        catch (IOException e){
             System.out.println(ERROR_READING_CONSOLE_MESSAGE);
         }
 
@@ -101,19 +105,39 @@ public class Menu {
             case 0:
                 System.exit(0);
             case 1:
-                salad.addVegetable(new Carrot());
+                try {
+                    salad.addVegetable(new Carrot());
+                }
+                catch(SaladHasIngredientException e){
+                    System.out.println("Salad already contains this vegetable");
+                }
                 runCustomSaladOptions();
                 break;
             case 2:
-                salad.addVegetable(new Potato());
+                try {
+                    salad.addVegetable(new Potato());
+                }
+                catch(SaladHasIngredientException e){
+                    System.out.println("Salad already contains this vegetable");
+                }
                 runCustomSaladOptions();
                 break;
             case 3:
-                salad.addVegetable(new Cucumber());
+                try {
+                    salad.addVegetable(new Cucumber());
+                }
+                catch(SaladHasIngredientException e){
+                    System.out.println("Salad already contains this vegetable");
+                }
                 runCustomSaladOptions();
                 break;
             case 4:
-                salad.addVegetable(new Tomato());
+                try {
+                    salad.addVegetable(new Tomato());
+                }
+                catch(SaladHasIngredientException e){
+                    System.out.println("Salad already contains this vegetable");
+                }
                 runCustomSaladOptions();
                 break;
             case 5: //go to main menu
@@ -136,12 +160,22 @@ public class Menu {
                 System.exit(0);
             case 1:
                 System.out.println(SEPARATOR_LINE);
-                salad.printAllInfo();
+                try {
+                    salad.printAllInfo();
+                }
+                catch(NoIngredientsException e){
+                    System.out.println("Salad has no ingredients.");
+                }
                 runSaladOptions();
                 break;
             case 2:
                 System.out.println(SEPARATOR_LINE);
-                System.out.println("Salad '" + salad.getName() + "' has " + salad.getCalories() + " calories");
+                try {
+                    System.out.println("Salad '" + salad.getName() + "' has " + salad.getCalories() + " calories");
+                }
+                catch (IngredientNotExistsException e){
+                    System.out.println("Ingredient not exists in salad");
+                }
                 runSaladOptions();
                 break;
             case 3:
@@ -195,7 +229,12 @@ public class Menu {
                 System.exit(0);
             case 1:
                 salad.sortByCalories();
-                salad.printAllInfo();
+                try {
+                    salad.printAllInfo();
+                }
+                catch (NoIngredientsException e){
+                    System.out.println("Salad has no ingredients.");
+                }
                 runSaladOptions();
                 break;
             case 2:

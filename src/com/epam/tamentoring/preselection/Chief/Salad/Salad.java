@@ -7,6 +7,9 @@ import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Potato;
 import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Tomato;
 import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
 import com.epam.tamentoring.preselection.Chief.Utils.ChiefHelper;
+import com.epam.tamentoring.preselection.ChiefExceptions.Exceptions.IngredientNotExistsException;
+import com.epam.tamentoring.preselection.ChiefExceptions.Exceptions.NoIngredientsException;
+import com.epam.tamentoring.preselection.ChiefExceptions.Exceptions.SaladHasIngredientException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +22,11 @@ public class Salad {
         this.name = ChiefHelper.NEW_SALAD_NAME;
         ingredients = new ArrayList<Vegetable>();
     }
+    public Salad(Vegetable vegetable){
+        this.name = ChiefHelper.NEW_SALAD_NAME;
+        ingredients = new ArrayList<Vegetable>();
+        ingredients.add(vegetable);
+    }
 
     public void setName(String name){
         this.name = name;
@@ -26,14 +34,20 @@ public class Salad {
     public String getName(){
         return this.name;
     }
-    public void addVegetable(Vegetable veg){
+
+    public void addVegetable(Vegetable veg) throws SaladHasIngredientException{
+        for (Vegetable ing : ingredients) {
+            if (veg.getClass() == ing.getClass()){
+                throw new SaladHasIngredientException();
+            }
+        }
         this.ingredients.add(veg);
     }
     /**
-     * Creates ArrayList of random available vegetables.
+     * Creates Salad of random available vegetables.
      * @param numberIngredients number of ingredients in salad
      */
-    public void makeRandomSalad(int numberIngredients){
+    public void makeRandomSalad(int numberIngredients) {
         ingredients.clear();
         ArrayList <Integer> ingrNumbers = ChiefHelper.getRandomValues(numberIngredients);
         for (int i = 0; i < ingrNumbers.size(); i++) {
@@ -60,6 +74,12 @@ public class Salad {
     public ArrayList<Vegetable> getIngredients(){
         return ingredients;
     }
+    public Vegetable getIngredient(int index) throws ArrayIndexOutOfBoundsException{
+        if(index >= ingredients.size()){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return ingredients.get(index);
+    }
     public ArrayList<Vegetable> findByCalories(double min, double max){
         if(min > max){
             double temp = min;
@@ -80,7 +100,10 @@ public class Salad {
     public void sortByCalories() {
         Collections.sort(ingredients, new VegetableCaloriesComparator());
     }
-    public double getCalories(){
+    public double getCalories() throws IngredientNotExistsException {
+        if(ingredients.size() == 0){
+            throw new IngredientNotExistsException();
+        }
         double calories = 0;
         for (int i = 0; i < ingredients.size(); i++) {
             calories += ingredients.get(i).getCalories();
@@ -95,7 +118,10 @@ public class Salad {
         }
         return "Salad '" + name + "' has following ingredients: " + ing;
     }
-    public void printAllInfo(){
+    public void printAllInfo() throws NoIngredientsException{
+        if(ingredients.size() == 0){
+            throw new NoIngredientsException();
+        }
         System.out.println("Salad '" + this.name + "' info:");
         ChiefHelper.printVegetablesInfo(this.getIngredients());
     }

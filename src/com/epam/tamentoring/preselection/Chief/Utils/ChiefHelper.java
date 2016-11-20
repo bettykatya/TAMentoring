@@ -28,7 +28,6 @@ public class ChiefHelper {
 
     public static final String NEW_SALAD_NAME = "New Salad";
     public static final int NUMBER_ALL_VEGETABLES = Veggies.values().length;
-    public static final double DEFAULT_CALORIES_FAT_CARBS = -1;
     public static final String FORMAT_STRING = "%-17s%-15s%-15s%-15s%n";
 
     /**

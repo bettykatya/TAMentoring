@@ -1,7 +1,5 @@
 package com.epam.tamentoring.preselection.Chief.Ingredients;
 
-import static com.epam.tamentoring.preselection.Chief.Utils.ChiefHelper.DEFAULT_CALORIES_FAT_CARBS;
-
 public class Vegetable {
     private String name;
     private double calories;
@@ -11,7 +9,10 @@ public class Vegetable {
     public Vegetable(){
 
     }
-    public Vegetable(String name, double calories, double fat, double carbs){
+    public Vegetable(String name, double calories, double fat, double carbs) throws IllegalArgumentException{
+        if(calories<0 || fat<0 || carbs<0){
+            throw new IllegalArgumentException();
+        }
         this.name = name;
         this.calories = calories;
         this.fat = fat;
@@ -32,7 +33,10 @@ public class Vegetable {
     }
 
 
-    public String getName(){
+    public String getName() throws NullPointerException{
+        if(this.name == ""){
+            throw new NullPointerException();
+        }
         return this.name;
     }
     public double getCalories(){
