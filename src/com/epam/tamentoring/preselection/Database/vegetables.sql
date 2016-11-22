@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS vegetables;
+CREATE DATABASE vegetables;
+USE vegetables;
+
+CREATE TABLE vegetable ( ID int(100), NAME VARCHAR(255), CALORIES DOUBLE, FAT DOUBLE, CARBS DOUBLE);
+
+INSERT INTO vegetable VALUES (1, 'pepper', 372.12, 501.23, 846.24);
+INSERT INTO vegetable VALUES (2, 'onion', 213.12, 123.23, 345.24);
+INSERT INTO vegetable VALUES (3, 'squash', 856.84, 345.43, 842.64);
+INSERT INTO vegetable VALUES (4, 'cabbage', 629.25, 723.53, 464.45);

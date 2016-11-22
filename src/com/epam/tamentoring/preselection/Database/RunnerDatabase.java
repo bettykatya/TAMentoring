@@ -1,37 +1,33 @@
 package com.epam.tamentoring.preselection.Database;
 
-import org.apache.derby.jdbc.EmbeddedDriver;
-
+import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
 import java.sql.*;
 
 public class RunnerDatabase {
-    private static String dbURL = "jdbc:derby://localhost:8948/myDB;create=true;user=me;password=mine";
-    public static void main(String[] args) {
-        createDB();
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/vegetables";
+
+    static final String USER = "root";
+    static final String PASS = "pass";
+
+    private static Connection connection = null;
+
+    public static void main(String[] args) throws ClassNotFoundException,SQLException {
+            Class.forName(JDBC_DRIVER);
+            DatabaseReader reader = new DatabaseReader(connection);
+            reader.setConnection(DriverManager.getConnection(DB_URL,USER,PASS));
+            printAllFromDB(reader);
     }
 
-    public static void createDB(){
-        try {
-            DriverManager.registerDriver(new EmbeddedDriver());
-            Connection connection = DriverManager.getConnection(dbURL,"","");
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE vegetables ( ID int GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), NAME varchr(255), CALORIES double, FAT double, CARBS double)");
-            statement.addBatch("INSERT INTO vegetables (NAME, CALORIES, FAT, CARBS) VALUES ('pepper', 2.2, 3.3, 4.4)");
-
-            statement.executeBatch();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM vegetables");
-            ResultSetMetaData metaData = resultSet.getMetaData();
-            while(resultSet.next()){
-                System.out.println("===================");
-                for (int i = 0, columnCount = metaData.getColumnCount(); i <= columnCount ; i++) {
-                    System.out.println(String.format("'%s' : '%s'",metaData.getColumnName(i), resultSet.getString(i)));
-                }
-                System.out.println("===================");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+    private static void printAllFromDB(DatabaseReader reader){
+        int rows = reader.getRowNumber();
+        System.out.println("Database contains " + rows + " rows:");
+        for (int i = 1; i <= rows; i++) {
+            Vegetable veg = reader.readInfo(i);
+            System.out.println(veg.getName() + ": calories = " + veg.getCalories() + ", fat = " + veg.getFat() + ", carbs = " + veg.getCarbs());
         }
-
     }
+
+
+
 }

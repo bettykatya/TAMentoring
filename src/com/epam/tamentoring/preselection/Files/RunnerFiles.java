@@ -1,11 +1,8 @@
 package com.epam.tamentoring.preselection.Files;
 
-import com.epam.tamentoring.preselection.Chief.Ingredients.Vegatables.Tomato;
 import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
-import com.epam.tamentoring.preselection.Chief.Salad.Salad;
 
 import java.io.*;
-
 /**
  * Дополнить сценарии, реализованные в задании 2.1 – добавить чтение данных из файла / запись данных в файл, используя I/O Streams.
  */
