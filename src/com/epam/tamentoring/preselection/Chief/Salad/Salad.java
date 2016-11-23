@@ -120,7 +120,7 @@ public class Salad {
     }
     public void printAllInfo() throws NoIngredientsException{
         if(ingredients.size() == 0){
-            throw new NoIngredientsException();
+            throw new NoIngredientsException("No ingredient");
         }
         System.out.println("Salad '" + this.name + "' info:");
         ChiefHelper.printVegetablesInfo(this.getIngredients());

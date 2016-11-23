@@ -7,7 +7,4 @@ public class IngredientNotExistsException extends Exception {
     public IngredientNotExistsException(){
 
     }
-    public IngredientNotExistsException(String message){
-        super(message);
-    }
 }

@@ -21,28 +21,33 @@ public class RunnerXMLParser {
         }
     }
     private static ArrayList<Vegetable> getVegFromXML() {
-        ArrayList<Vegetable> vegetables = new ArrayList<>();;
+        ArrayList<Vegetable> vegetables = new ArrayList<>();
         try {
-            File fXmlFile = new File(PATH);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            File xmlFile = new File(PATH);
+            if (xmlFile.isFile() && xmlFile.canRead()) {
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                Document doc = dBuilder.parse(xmlFile);
 
-            NodeList nList = doc.getElementsByTagName("Vegetable");
-            for (int temp = 0; temp < nList.getLength(); temp++) {
-                Node nNode = nList.item(temp);
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
-                    String name = eElement.getAttribute("Name");
-                    double calories = Double.parseDouble(eElement.getElementsByTagName("Calories").item(0).getTextContent());
-                    double fat = Double.parseDouble(eElement.getElementsByTagName("Fat").item(0).getTextContent());
-                    double carbs = Double.parseDouble(eElement.getElementsByTagName("Carbs").item(0).getTextContent());
+                NodeList nList = doc.getElementsByTagName("Vegetable");
+                System.out.println(nList.getLength());
+                for (int i = 0; i < nList.getLength(); i++) {
+                    Node nNode = nList.item(i);
+                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                        Element eElement = (Element) nNode;
+                        String name = eElement.getAttribute("Name");
+                        double calories = Double.parseDouble(eElement.getElementsByTagName("Calories").item(0).getTextContent());
+                        double fat = Double.parseDouble(eElement.getElementsByTagName("Fat").item(0).getTextContent());
+                        double carbs = Double.parseDouble(eElement.getElementsByTagName("Carbs").item(0).getTextContent());
 
-                    vegetables.add(new Vegetable(name, calories, fat, carbs));
+                        vegetables.add(new Vegetable(name, calories, fat, carbs));
+                    }
                 }
+            } else {
+                System.out.println("File doesn't exist.");
             }
         } catch (Exception e) {
-            System.out.println("Error occured. ");
+            System.out.println("Error occurred when parsing file. ");
         }
 
         return vegetables;

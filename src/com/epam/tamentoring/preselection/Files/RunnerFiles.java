@@ -73,9 +73,8 @@ public class RunnerFiles {
         try {
             vegParameters = line.split("\\s+");
         } catch (Exception e) {
-            System.out.println("Error occured. ");
+            System.out.println("Error occurred. ");
         }
-        Vegetable veg = new Vegetable(vegParameters[0],Double.parseDouble(vegParameters[1]),Double.parseDouble(vegParameters[2]),Double.parseDouble(vegParameters[3]));
-        return veg;
+        return new Vegetable(vegParameters[0],Double.parseDouble(vegParameters[1]),Double.parseDouble(vegParameters[2]),Double.parseDouble(vegParameters[3]));
     }
 }

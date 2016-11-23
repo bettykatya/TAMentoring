@@ -4,11 +4,11 @@ import com.epam.tamentoring.preselection.Chief.Ingredients.Vegetable;
 import java.sql.*;
 
 public class RunnerDatabase {
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/vegetables";
+    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/vegetables";
 
-    static final String USER = "root";
-    static final String PASS = "pass";
+    private static final String USER = "root";
+    private static final String PASS = "pass";
 
     private static Connection connection = null;
 
